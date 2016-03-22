@@ -55,6 +55,7 @@ public class ImageAdapter extends ArrayAdapter<String> {
 
         viewHolder = (ViewHolder)convertView.getTag();
         viewHolder.imageURL = imageURLArray[position];
+        viewHolder.imageView.setImageResource(R.drawable.loading);
         new DownloadAsyncTask().execute(viewHolder);
         return convertView;
     }
