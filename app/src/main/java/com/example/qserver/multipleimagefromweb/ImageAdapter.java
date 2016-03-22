@@ -2,6 +2,7 @@ package com.example.qserver.multipleimagefromweb;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,11 +17,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 
 public class ImageAdapter extends ArrayAdapter<String> {
-    private String[] imageURLArray;
+    private ArrayList<String> imageURLArray;
 
    Activity activity;
     public ImageAdapter(Activity activity, int textViewResourceId,
-                        String[] imageArray) {
+                        ArrayList<String> imageArray) {
         super(activity, textViewResourceId, imageArray);
         // TODO Auto-generated constructor stub
 
@@ -54,7 +55,8 @@ public class ImageAdapter extends ArrayAdapter<String> {
         }
 
         viewHolder = (ViewHolder)convertView.getTag();
-        viewHolder.imageURL = imageURLArray[position];
+
+        viewHolder.imageURL = imageURLArray.get(position);
         viewHolder.imageView.setImageResource(R.drawable.loading);
         new DownloadAsyncTask().execute(viewHolder);
         return convertView;
